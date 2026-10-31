@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f6ef">
+<meta name="description" content="Jim's Bike Route｜慈字水岸線。以馬卡龍色系 3D 互動浮島，探索慈祐宮文化徑、綠帶微森林與水岸巡航。路線為概念展示，非即時導航。">
+<title>Jim's Bike Route — 慈字水岸線｜Riverside Cycling Journal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@500;600;700&display=swap');
+
+  :root{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;color:#314755;background:#f9f7f3;--ink:#314755;--muted:#778a95;--border:#e6e8e5;--paper:#fffdfb;--blue:#a8d8ea;--mint:#aae3c6;--peach:#ffd3b6;--pink:#ffcad4;--lavender:#d9c2f0;--yellow:#fff1a8;--shadow:0 14px 40px #607f8720;}
+  *{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden} button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}a{color:#487f8c}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #769fe0;outline-offset:2px}
+  .app{display:grid;grid-template-columns:298px minmax(0,1fr);height:100dvh;min-height:490px;position:relative;overflow:hidden}
+  .side{background:linear-gradient(160deg,#fffcf8 5%,#f3faff 52%,#f7f2fc 100%);border-right:1px solid #dfe8e8;display:flex;flex-direction:column;z-index:30;min-height:0;box-shadow:7px 0 26px #63909a0b}
+  .brand{padding:25px 23px 16px;border-bottom:1px solid var(--border)}.brandline{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:17px;background:linear-gradient(130deg,#fbd0c0,#ffd5e4);box-shadow:inset 0 -5px 0 #f9b6ad60,0 5px 12px #f7b9ad3b;font-size:26px;transform:rotate(-6deg)}.logo span{transform:rotate(6deg)}.brandname{font-size:19px;font-weight:900;letter-spacing:-.5px}.brandsub{font-size:10px;letter-spacing:1.8px;font-weight:900;color:#7ca6aa;margin-top:2px}.brand-desc{font-size:12px;color:#667d88;line-height:1.78;margin:15px 0 0}
+  .mode{padding:16px 20px 15px;border-bottom:1px solid var(--border)}.label{display:block;font-size:11px;letter-spacing:.7px;color:#78909b;font-weight:800;margin-bottom:9px}.switcher{display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;background:#eaf3f3;border-radius:14px}.switcher button{border:0;background:transparent;color:#63808b;padding:10px 5px;border-radius:11px;font-size:12px;font-weight:800;transition:.2s}.switcher button.active{background:white;color:#315463;box-shadow:0 3px 12px #779fa624}.route-brief{margin-top:12px;border-radius:12px;background:#fff;border:1px solid #e2eded;padding:12px;font-size:11px;line-height:1.7;color:#6d8791}.route-brief b{color:#3a5963}
+  .side-head{padding:18px 21px 8px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#7c9098;letter-spacing:.7px;font-weight:850}.count{font-weight:600;letter-spacing:0;color:#9aadb6}.stage-list{padding:0 13px;overflow:auto;flex:1;min-height:0}.stage-btn{width:100%;display:flex;text-align:left;align-items:center;gap:11px;background:transparent;border:1px solid transparent;border-radius:16px;padding:11px 10px;margin:3px 0;color:var(--ink);transition:.2s}.stage-btn:hover,.stage-btn.active{background:#fff;border-color:#e7eaee;box-shadow:0 5px 18px #91a5a91c}.stage-n{height:45px;width:45px;flex:none;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:16px;color:#53626c;background:var(--stage-bg)}.stage-info{min-width:0}.stage-title{font-size:13px;font-weight:900}.stage-sub{font-size:10px;color:#8ba0a9;line-height:1.5;margin-top:3px}.stage-arrow{margin-left:auto;color:#a0aeb8}
+  .side-addons{padding:12px 18px;display:grid;gap:8px;border-top:1px solid #e9eeed}.plain-btn{border:1px solid #e4e9e9;background:#fffdfa;color:#55717a;font-size:11px;font-weight:850;padding:10px 11px;text-align:left;border-radius:11px;display:flex;justify-content:space-between}.plain-btn:hover{border-color:#a8d8ea;background:#effaff}.side-bottom{padding:11px 21px 15px;font-size:10px;color:#9bacb1;line-height:1.55}.side-bottom strong{color:#67868b}
+  .world{min-width:0;position:relative;overflow:hidden;background:linear-gradient(135deg,#e4f8fd,#fff9f4 75%)}#scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}.vignette{pointer-events:none;position:absolute;inset:0;background:radial-gradient(ellipse at 52% 43%,transparent 44%,#e7e9f42e 100%)}
+  .topbar{position:absolute;left:30px;right:28px;top:25px;display:flex;gap:15px;align-items:flex-start;z-index:10;pointer-events:none}.hero{max-width:470px;pointer-events:auto}.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:900;letter-spacing:2px;color:#588c98}.eyebrow i{width:7px;height:7px;background:#e7aaa9;display:inline-block;border-radius:50%}.hero h1{font-size:clamp(23px,2.7vw,38px);line-height:1.22;margin:10px 0 7px;letter-spacing:-.9px;font-weight:950;color:#365361;text-shadow:0 1px #ffffffab}.hero p{font-size:12px;line-height:1.7;color:#718f9a;margin:0;max-width:440px}.actions{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto;max-width:405px}.pill{min-height:40px;border:1px solid #ffffffeb;border-radius:13px;background:#fffdfae6;box-shadow:0 5px 18px #7aa0a419;color:#527078;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 11px;font-size:11px;font-weight:850;backdrop-filter:blur(12px);transition:.2s}.pill:hover,.pill.active{background:#c9efe2;color:#365763}.pill .sym{font-size:16px;font-weight:900}
+  .legend{position:absolute;z-index:9;left:30px;bottom:121px;background:#ffffffe0;backdrop-filter:blur(13px);box-shadow:0 8px 24px #7b9aa81a;border:1px solid white;border-radius:15px;padding:12px 14px;max-width:300px}.legend-title{color:#5a7b85;font-weight:900;font-size:11px;margin-bottom:7px}.legend-row{display:flex;align-items:center;gap:7px;font-size:10px;color:#768d95;margin:5px 0}.legend-dot{width:10px;height:10px;border-radius:50%}.legend-note{font-size:9px;line-height:1.6;color:#92a5ac;border-top:1px solid #e7eef1;margin-top:7px;padding-top:7px}
+  .stage-strip{position:absolute;bottom:25px;left:28px;right:28px;z-index:9;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;pointer-events:auto;max-width:1000px}.stage-tile{display:flex;gap:9px;align-items:center;border:1px solid #fffdfb;background:#fffdfbee;backdrop-filter:blur(12px);border-radius:16px;padding:12px;text-align:left;color:#43606b;box-shadow:0 7px 30px #779aa622;min-width:0;transition:.2s}.stage-tile.active{transform:translateY(-4px);border-color:#eab6aa;box-shadow:0 10px 30px #d2a6ad41}.stage-tile .bubble{width:37px;height:37px;flex:none;border-radius:12px;background:var(--tile-bg);display:grid;place-items:center;font-size:20px}.tile-name{font-size:12px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tile-sub{font-size:10px;color:#93a4a9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+  .panel{position:absolute;top:109px;bottom:122px;right:22px;width:350px;z-index:22;display:flex;flex-direction:column;overflow:hidden;background:#fffefaed;box-shadow:0 20px 65px #6586973d;border:1px solid white;border-radius:21px;backdrop-filter:blur(22px);transform:translateX(calc(100% + 32px));opacity:0;pointer-events:none;transition:transform .34s ease,opacity .34s ease}.panel.open{transform:translateX(0);opacity:1;pointer-events:auto}.panel-head{padding:19px 20px 18px;background:linear-gradient(120deg,var(--panel-bg,#d9f0eb),#fffbf9);flex:none;position:relative;border-bottom:1px solid #fff}.panel-kicker{color:#6b9195;font-size:10px;letter-spacing:1.5px;font-weight:900}.panel-title{font-size:23px;font-weight:950;line-height:1.35;margin:8px 28px 7px 0;color:#365661}.panel-lead{font-size:11px;color:#6a858d;line-height:1.75;margin:0}.close{position:absolute;top:14px;right:14px;width:29px;height:29px;border-radius:10px;border:1px solid #fff;background:#fff9;color:#5f7a82;font-size:19px}.panel-body{overflow:auto;padding:17px 19px 20px;min-height:0;scrollbar-color:#d1e4e2 transparent;scrollbar-width:thin}.sec-heading{margin:2px 0 10px;font-size:12px;font-weight:950;color:#42646e}.copy{font-size:12px;color:#6b8590;line-height:1.9;margin:0 0 12px}.card{background:#fff;border:1px solid #edf0ec;border-radius:14px;padding:13px;margin:0 0 11px;box-shadow:0 4px 12px #7c9a9c0b}.card h3{margin:0 0 7px;font-size:12px;color:#405f68}.card p{margin:0;font-size:11px;line-height:1.85;color:#738b93}.card-tag{display:inline-block;padding:5px 8px;border-radius:9px;background:#f3f5f5;color:#789097;font-size:10px;font-weight:800;margin:0 5px 5px 0}.supply{display:flex;align-items:flex-start;gap:10px}.supply-icon{flex:none;width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:#fff1d5;font-size:18px}.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0 13px}.datum{background:#fff;border:1px solid #edf0f0;border-radius:13px;padding:12px}.datum-label{color:#8a9fa5;font-size:10px}.datum-value{font-size:16px;font-weight:950;color:#466674;margin-top:5px}.datum small{font-size:9px;color:#9aabb0}.note{display:flex;gap:8px;background:#fff6e6;border:1px solid #f4e7d4;border-radius:12px;padding:11px 12px;color:#987d62;font-size:10px;line-height:1.8;margin-bottom:12px}.btn-row{display:flex;gap:8px;margin:11px 0}.cta{border:0;background:#b9e8d6;color:#3b6670;font-weight:900;font-size:11px;border-radius:11px;padding:11px 13px;flex:1}.cta:hover{background:#a7dcc8}.ghost{border:1px solid #dce7e9;background:white;color:#69828c;font-weight:800;font-size:11px;border-radius:11px;padding:10px 12px}.ghost:hover{background:#f3f9fa}.source-link{font-size:11px;text-decoration:none;font-weight:800}.source-link:hover{text-decoration:underline}
+  .field{display:grid;gap:6px;margin:9px 0}.field label{font-size:11px;font-weight:850;color:#65818c}.field input{width:100%;border:1px solid #dde9e9;padding:10px 11px;border-radius:10px;font-size:12px;color:#45646e;background:#fff}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.post-text{border:1px dashed #badbdc;border-radius:12px;background:#f7fbfb;padding:13px;white-space:pre-wrap;font-size:11px;color:#5f7d87;line-height:1.8;max-height:275px;overflow:auto}
+  .footer{position:absolute;right:23px;bottom:7px;color:#809da4;font-weight:750;letter-spacing:.6px;font-size:10px;z-index:9;text-shadow:0 1px white}.mobile-toggle{display:none}.toast{pointer-events:none;position:absolute;left:50%;top:82px;transform:translate(-50%,-15px);border-radius:13px;background:#415f67;color:white;padding:11px 17px;font-size:11px;opacity:0;transition:.25s;z-index:50;text-align:center;min-width:160px}.toast.show{opacity:1;transform:translate(-50%,0)}.loading{position:absolute;inset:0;z-index:40;background:#f4fbf9e9;display:grid;place-items:center;align-content:center;gap:13px;text-align:center;color:#52737c}.loading strong{font-size:17px}.loading p{max-width:380px;font-size:12px;line-height:1.8;margin:0 16px;color:#7f959c}.loader{width:45px;height:45px;border:5px solid #d5ebed;border-top-color:#ddabac;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:1160px){.topbar{left:19px;right:17px}.hero h1{font-size:25px}.hero{max-width:280px}.stage-strip{left:18px;right:18px}.legend{left:18px}.panel{right:13px;width:322px}.actions{max-width:230px}.pill{padding:0 9px}.pill .caption{display:none}}
+  @media(max-width:760px){.app{display:block}.side{position:absolute;inset:0 auto 0 0;width:min(86vw,310px);transform:translateX(-103%);transition:transform .3s;box-shadow:12px 0 40px #60778630}.side.open{transform:translateX(0)}.world{width:100%;height:100dvh;min-height:480px}.mobile-toggle{display:grid;place-items:center;position:absolute;top:14px;left:14px;z-index:20;width:40px;height:40px;border:1px solid #ffffffea;border-radius:12px;background:#fffdfae9;color:#58747d;font-size:20px;box-shadow:0 4px 14px #82949d22}.topbar{top:65px;left:17px;right:14px}.hero h1{font-size:23px}.hero p{font-size:11px}.eyebrow{font-size:9px}.actions{position:absolute;right:0;top:-50px;max-width:calc(100% - 50px);gap:5px}.pill{height:38px;min-height:38px;padding:0 9px}.legend{bottom:155px;left:14px;max-width:240px;padding:9px 11px}.legend-note{display:none}.stage-strip{bottom:32px;left:10px;right:10px;gap:5px}.stage-tile{padding:9px 6px;gap:5px;border-radius:13px;flex-direction:column;text-align:center}.stage-tile .bubble{height:30px;width:30px;font-size:17px}.tile-name{font-size:10px}.tile-sub{font-size:9px}.panel{right:8px;left:8px;width:auto;top:auto;bottom:20px;height:min(68dvh,540px);border-radius:19px;transform:translateY(calc(100% + 40px))}.panel.open{transform:translateY(0)}.footer{bottom:5px;right:12px;font-size:9px}.toast{top:122px}.app.menu-open:after{content:"";position:absolute;inset:0;background:#203a425a;z-index:25}}
+  @media(max-width:390px){.legend{display:none}.hero h1{font-size:21px}.hero p{font-size:10px}.pill{font-size:10px}}
+  @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* =========================================================
+   EDITORIAL REDESIGN / JIM'S BIKE ROUTE / ISSUE 001
+   Original layout inspired by outdoorsy cycling typography and
+   Swiss editorial grids; no commercial template assets reused.
+   ========================================================= */
+:root {
+  --ink:#253a35; --muted:#6b7b76; --border:#dce1d8; --paper:#faf9f4;
+  --blue:#cce1e7; --mint:#d1e8db; --peach:#eed4c4; --pink:#f2dde0;
+  --lavender:#dfd9ed; --yellow:#f1e9c9; --shadow:0 20px 60px #17372e1a;
+  font-family:'DM Sans','Noto Sans TC',sans-serif;
+  color:var(--ink); background:var(--paper);
+  font-synthesis:none;
+}
+body {letter-spacing:.01em}
+button, input {font-family:inherit}
+.app {grid-template-columns:304px minmax(0,1fr);height:100dvh;min-height:0}
+.side {background:#faf9f4;border-right:1px solid #d9e0d7;box-shadow:none;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ced9d0 transparent}
+.brand {padding:26px 27px 4px;border:0}
+.brandline {align-items:center;gap:12px}
+.logo {width:39px;height:39px;flex:none;background:#24473d;color:#f7f4e9;border-radius:50%;box-shadow:none;transform:none;font:800 23px/1 'DM Sans',sans-serif;letter-spacing:-.10em}
+.logo span{transform:none;padding-right:3px}
+.brandname{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.035em;line-height:1.07;color:#203a31}
+.brandname span{display:block;font-size:15px;letter-spacing:-.01em}
+.brandsub{font-size:8px;letter-spacing:1.55px;color:#70867a;font-weight:700;margin-top:8px}
+.brand-metadata{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.2px;color:#87958d;margin-top:35px}
+.brand-desc{font-family:'Noto Serif TC',serif;font-size:23px;color:#253e36;font-weight:600;line-height:1.65;letter-spacing:-.02em;margin:11px 0 18px}
+.brand-desc em{font-style:normal;color:#658c7b}
+.brand-rule{height:1px;background:#bfcac2;margin-bottom:1px}
+.mode{padding:19px 27px 19px;border-bottom:1px solid #dfe5dd}
+.label{font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:9px;letter-spacing:1px;font-weight:700;margin:0 0 13px;color:#697e72}
+.switcher{background:#eeefe9;border-radius:4px;padding:3px;gap:3px}
+.switcher button{padding:10px 6px;border-radius:2px;font-size:11px;font-weight:700;color:#687870}
+.switcher button:hover{color:#29463c}
+.switcher button.active{background:#fffefa;color:#243e34;box-shadow:0 1px 3px #1d30200d}
+.route-brief{background:transparent;border:0;border-radius:0;border-left:2px solid #95b7a5;padding:4px 0 4px 12px;color:#61776b;font-size:11px;margin-top:14px;line-height:1.75}
+.route-brief b{color:#284136}
+.side-head{padding:20px 27px 9px;color:#657d70;font-size:9px;letter-spacing:.85px}
+.count{font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:9px;color:#85958b}
+.stage-list{padding:0 27px;overflow:visible;flex:0 0 auto}
+.stage-btn{padding:15px 0;border:0;border-top:1px solid #dde3da;border-radius:0;margin:0;gap:13px;color:#2f463a;box-shadow:none!important;background:transparent!important;transition:padding .2s,color .2s}
+.stage-btn:last-child{border-bottom:1px solid #dde3da}
+.stage-btn:hover,.stage-btn.active{padding-left:6px;color:#245c48}
+.stage-n{width:34px;height:35px;flex:none;border:0;border-radius:1px;background:var(--stage-bg);font-family:'DM Sans',sans-serif;color:#364b41;font-size:12px;font-weight:800}
+.stage-title{font-size:12px;font-weight:700;line-height:1.5;display:block}
+.stage-sub{font-size:10px;color:#819187;font-weight:400;display:block;letter-spacing:0}
+.stage-arrow{font-family:'DM Sans',sans-serif;font-size:16px;color:#93a89a}
+.side-addons{margin:18px 27px 0;padding:0 0 0;border:0;display:block}
+.side-tools-title{border-bottom:1px solid #bfcac2;padding:0 0 12px;font-size:9px;letter-spacing:1px;color:#718277;font-weight:700}
+.plain-btn{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-radius:0;background:transparent;padding:13px 0;border-bottom:1px solid #e1e5df;color:#2f463c;font-size:11px;font-weight:600;box-shadow:none}
+.plain-btn:hover{background:transparent;color:#267453;padding-left:6px}
+.plain-btn span{color:#789583;font-size:15px}
+.side-bottom{margin-top:20px;padding:18px 27px 28px;border-top:1px solid #dce3da;color:#788b80;font-size:10px;line-height:1.75}
+.side-bottom strong{display:inline;color:#596d62}
+.aside-issue{display:block;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;color:#7c9787;margin-bottom:7px}
+.aside-copyright{display:block;color:#29483b;font-size:10px;font-weight:800;margin-top:15px}
+.world{background:#e7f1eb}
+.world::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,#f3f7f2ae 0%,#f4f7f15e 24%,transparent 55%)}
+.vignette{background:radial-gradient(ellipse at 56% 49%,transparent 40%,#dbe6db28 100%);z-index:1}
+.topbar{left:37px;right:33px;top:39px;align-items:flex-start;z-index:12;gap:20px}
+.hero{max-width:460px}
+.eyebrow{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;color:#678a76;gap:9px}
+.eyebrow i{width:22px;height:1px;background:#638f7d;border-radius:0}
+.eyebrow-sep{color:#a9b7a9;margin:0 3px}
+.hero h1{font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:clamp(34px,3.8vw,64px);font-weight:800;letter-spacing:-.06em;line-height:1.2;color:#233d32;text-shadow:none;margin:19px 0 14px}
+.hero h1 span{font-family:'Noto Serif TC',serif;font-size:clamp(26px,3.05vw,43px);font-weight:600;letter-spacing:-.045em;line-height:1.49;display:block;margin-top:5px;color:#3d604c}
+.hero p{font-size:12px;letter-spacing:.01em;line-height:1.9;font-weight:500;color:#607b6c;max-width:340px}
+.hero-links{display:flex;align-items:center;gap:24px;margin-top:22px}
+.hero-cta{border:0;background:#285340;border-radius:2px;color:#fffaf0;padding:14px 16px 14px 19px;min-height:45px;display:flex;gap:30px;align-items:center;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.06em;box-shadow:none;transition:background .2s,transform .2s}
+.hero-cta:hover{background:#3b7555;transform:translateY(-2px)}
+.hero-cta span{font-size:15px}
+.hero-secondary{border:0;background:transparent;border-bottom:1px solid #526e5b;color:#375645;padding:8px 0 6px;display:inline-flex;gap:18px;align-items:center;font-size:11px;font-weight:700}
+.hero-secondary:hover{color:#278357;border-color:#278357}
+.actions{gap:0;max-width:none;align-items:center;background:#fcfbf5dd;border:1px solid #dbe3d8;box-shadow:0 5px 18px #1e44301a;padding:4px;border-radius:3px;backdrop-filter:blur(10px)}
+.action-label{font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:1.2px;font-weight:800;color:#6a8173;padding:0 10px;white-space:nowrap}
+.pill{height:33px;min-height:33px;padding:0 11px;gap:6px;border:0;border-left:1px solid #dce4da;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;color:#355346;font-weight:700;font-size:10px}
+.pill .sym{font-size:14px}
+.pill:hover,.pill.active{background:#d9e9df;color:#234e3d}
+.map-counter{position:absolute;top:345px;right:40px;z-index:3;pointer-events:none;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.8px;color:#658779;writing-mode:vertical-rl}
+.map-counter span{color:#99afa0}
+.legend{left:37px;bottom:132px;max-width:244px;border:0;border-left:1px solid #9daf9d;border-radius:0;padding:1px 0 2px 16px;background:transparent;box-shadow:none;backdrop-filter:none}
+.legend-title{display:flex;justify-content:space-between;gap:12px;letter-spacing:1.2px;color:#385c47;font-size:10px;font-weight:800;font-family:'DM Sans',sans-serif;padding-bottom:10px;margin:0}
+.legend-title span{color:#94ad9c;font-weight:500}
+.legend-row{font-size:10px;color:#5d7667;margin:7px 0;gap:9px;font-weight:600}
+.legend-dot{width:7px;height:7px;border-radius:1px}
+.legend-en{color:#99aa9a;margin-left:auto;font-size:9px;font-family:'DM Sans',sans-serif;font-weight:500}
+.legend-note{border-top:1px solid #d9e3d8;font-size:9px;color:#8ca192;line-height:1.65;margin-top:11px;padding-top:8px}
+.stage-strip{bottom:31px;left:35px;right:35px;max-width:none;gap:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#fcfbf5ef;border-top:1px solid #b6c6b8;border-bottom:1px solid #b6c6b8;box-shadow:0 15px 32px #3457430d;backdrop-filter:blur(8px)}
+.stage-tile{min-height:85px;padding:14px 18px;gap:15px;border:0;border-right:1px solid #d7e1d8;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;color:#2e483a;transition:background .2s,transform .2s}
+.stage-tile:last-child{border-right:0}
+.stage-tile:hover,.stage-tile.active{background:#e4eee7;transform:none;border-color:#ccd7cb;box-shadow:none}
+.tile-index{font-family:'DM Sans',sans-serif;font-size:30px;color:#94ad9f;line-height:1;letter-spacing:-.08em;font-weight:500}
+.stage-tile.active .tile-index{color:#3a7659}
+.tile-content{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:2px}
+.tile-kicker{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:1px;font-weight:700;color:#899e8d}
+.tile-name{font-size:12px;font-weight:700;letter-spacing:.02em;color:#2d483c}
+.tile-sub{font-size:10px;color:#7f9688;font-weight:400}
+.tile-arrow{font-size:17px;color:#73917e;margin-left:auto;align-self:center}
+.panel{top:112px;bottom:134px;right:29px;width:min(382px,calc(100% - 56px));border:1px solid #d7ded5;border-radius:2px;background:#fbfaf5f8;backdrop-filter:blur(15px);box-shadow:0 25px 60px #1c44352f}
+.panel-head{padding:26px 26px 21px;background:#faf9f4;border-bottom:1px solid #dfe5dd;border-top:4px solid var(--panel-bg,#d1e4dc)}
+.panel-kicker{font-family:'DM Sans',sans-serif;color:#799686;font-size:9px;font-weight:800;letter-spacing:2px}
+.panel-title{font-family:'Noto Serif TC',serif;font-size:27px;letter-spacing:-.05em;font-weight:600;line-height:1.45;color:#2b4338;margin:10px 23px 10px 0}
+.panel-lead{font-size:11px;line-height:1.9;color:#6c8072}
+.close{background:transparent;border:1px solid #cbd6c9;border-radius:50%;width:32px;height:32px;top:18px;right:18px;color:#546d5d;font-size:18px}
+.close:hover{background:#e5eee5}
+.panel-body{padding:23px 25px 25px;scrollbar-color:#c5d4c8 transparent}
+.sec-heading{font-size:11px;letter-spacing:.07em;color:#2e4e3d;font-weight:800;margin:15px 0 12px}
+.copy{font-size:12px;line-height:1.95;color:#5c7365}
+.card{padding:17px 0 16px;margin:0;border:0;border-bottom:1px solid #dfe6dc;border-radius:0;background:transparent;box-shadow:none}
+.card h3{font-size:12px;color:#2b493a;margin-bottom:7px;font-weight:750}
+.card p{font-size:11px;color:#687e6e;line-height:1.85}
+.card-tag{border:1px solid #cfddd0;background:transparent;color:#6d937c;border-radius:2px;font-size:9px;padding:3px 7px}
+.supply{gap:13px}
+.supply-icon{width:30px;height:30px;background:#ebf0e9;border-radius:3px;font-size:15px}
+.info-grid{border-top:1px solid #d5e0d3;border-bottom:1px solid #d5e0d3;gap:0;margin:10px 0 22px}
+.datum{border:0;border-right:1px solid #dce4d9;border-bottom:1px solid #dce4d9;border-radius:0;background:transparent;padding:16px 11px}
+.datum:nth-child(2n){border-right:0}.datum:nth-child(n+3){border-bottom:0}
+.datum-label{color:#889e8d;font-size:10px}.datum-value{color:#284334;font-weight:800;font-size:22px}.datum-value small{color:#869889;font-size:10px;font-weight:500}
+.note{background:#edf2e9;border:0;border-left:2px solid #93ad9b;border-radius:0;padding:13px 14px;color:#688172;font-size:11px;line-height:1.8}
+.cta{border-radius:2px;background:#2c5741;color:#fff;border:1px solid #2c5741;font-size:11px;font-weight:700;padding:11px 14px}
+.cta:hover{background:#386f50;border-color:#386f50}
+.ghost{border-radius:2px;color:#355a45;border:1px solid #c6d7c7;background:transparent;font-weight:700;font-size:11px;padding:10px 13px}
+.ghost:hover{background:#e6eee5}
+.source-link{color:#2d6e4e;font-weight:700;font-size:11px}
+.field label{color:#536e5f;font-size:11px}
+.field input{border:1px solid #cad5cb;border-radius:2px;background:#fff;padding:11px;color:#284c3a}
+.post-text{background:#f2f4ed;border:1px solid #dce3d8;border-radius:2px;color:#4e6857;padding:17px;line-height:1.95}
+.footer{color:#678276;right:29px;bottom:8px;font-size:9px;font-weight:750;letter-spacing:.06em;text-shadow:none;z-index:10}
+.footer span{font-weight:500;color:#8a9e8e}
+.toast{border-radius:2px;background:#294b3b;color:#f9f7f1;font-size:11px}
+.loading{background:#edf4eeeF;color:#294d3b}.loader{border-color:#d9e5d9;border-top-color:#65977d}
+@media(max-width:1320px){
+ .app{grid-template-columns:280px minmax(0,1fr)}
+ .brand{padding-left:22px;padding-right:22px}
+ .mode,.side-head,.stage-list,.side-bottom{padding-left:22px;padding-right:22px}
+ .side-addons{margin-left:22px;margin-right:22px}
+ .topbar{left:25px;right:22px;top:28px}
+ .hero{max-width:340px}.hero h1{font-size:38px}.hero h1 span{font-size:30px}
+ .actions{max-width:none}.action-label{display:none}.pill{padding:0 8px}
+ .stage-strip{left:23px;right:23px}.legend{left:24px;bottom:137px}
+ .stage-tile{padding:12px;gap:9px}.tile-index{font-size:24px}.tile-name{font-size:11px}
+ .panel{right:19px;width:337px;top:109px}
+}
+@media(max-width:1000px){
+ .app{grid-template-columns:260px minmax(0,1fr)}
+ .hero{max-width:245px}.hero h1{font-size:31px;line-height:1.22}.hero h1 span{font-size:25px}
+ .hero p{font-size:11px}.hero-links{gap:12px;margin-top:14px}
+ .hero-cta{padding:10px 11px;gap:10px;min-height:40px}.hero-secondary{font-size:10px}
+ .actions .caption{display:none}
+ .legend{bottom:147px}.stage-tile{min-height:88px}.tile-sub{font-size:9px}.tile-arrow{display:none}
+ .map-counter{right:14px}.panel{width:315px}
+}
+@media(max-width:760px){
+ .app{display:block;min-height:0}
+ .world{height:100dvh;min-height:470px}
+ .side{z-index:35;position:absolute;inset:0 auto 0 0;width:min(88vw,340px);transform:translateX(-104%);box-shadow:10px 0 55px #29453624}
+ .side.open{transform:translateX(0)}
+ .brand{padding:27px 24px 8px}.mode,.side-head,.stage-list,.side-bottom{padding-left:24px;padding-right:24px}.side-addons{margin:16px 24px 0}
+ .mobile-toggle{z-index:25;width:38px;height:38px;top:14px;left:15px;border:1px solid #cddbcf;border-radius:2px;background:#faf9f3;color:#294d3b;box-shadow:none}
+ .topbar{top:67px;left:19px;right:18px;gap:0;display:block}
+ .hero{max-width:305px}.eyebrow{font-size:8px}.eyebrow i{width:13px}
+ .hero h1{font-size:clamp(31px,8.8vw,44px);margin:12px 0 8px}.hero h1 span{font-size:clamp(23px,7.1vw,32px);line-height:1.38;margin-top:3px}
+ .hero p{font-size:10px;max-width:270px;line-height:1.75}
+ .hero-links{margin-top:13px;gap:17px}.hero-cta{min-height:36px;padding:9px 12px;font-size:10px}
+ .hero-secondary{font-size:10px}
+ .actions{position:absolute;right:0;top:-53px;max-width:calc(100vw - 83px);height:38px;gap:0;border-radius:2px}
+ .actions .caption{display:none}
+ .pill{height:29px;min-height:29px;padding:0 9px}.pill .sym{font-size:14px}
+ .map-counter{display:none}
+ .legend{left:20px;bottom:154px;max-width:200px;background:#f9faf1b7;padding:7px 10px;box-shadow:none;border-left:1px solid #93b19c}
+ .legend-note{display:none}.legend-title{font-size:9px}.legend-row{font-size:9px}
+ .stage-strip{left:0;right:0;bottom:23px;grid-template-columns:repeat(3,minmax(0,1fr));max-width:100%;background:#fbfaf5f1;border:0;border-top:1px solid #c1d0c2}
+ .stage-tile{flex-direction:column;align-items:flex-start;gap:5px;text-align:left;padding:10px 9px;min-height:105px;justify-content:center;border-right:1px solid #d8e2d7}
+ .tile-index{font-size:23px}.tile-content{gap:3px}.tile-kicker{font-size:7px}.tile-name{font-size:10px;white-space:normal;line-height:1.45;min-height:27px}.tile-sub{display:none}
+ .panel{right:0;left:0;width:100%;bottom:0;top:auto;height:min(69dvh,580px);border-radius:0;border-left:0;border-right:0;transform:translateY(calc(100% + 12px));box-shadow:0 -13px 45px #133e312b}
+ .panel.open{transform:translateY(0)}.panel-head{padding:18px 22px 16px}.panel-title{font-size:24px}
+ .panel-body{padding:15px 22px 22px}.footer{bottom:5px;right:10px;font-size:8px}.footer span{display:none}
+ .toast{top:112px}.app.menu-open:after{z-index:28}
+}
+@media(max-width:390px){
+ .hero{max-width:245px}.hero h1{font-size:31px}.hero h1 span{font-size:22px}
+ .hero p{font-size:10px}.legend{display:none}
+ .actions{gap:0}.pill{padding:0 7px}
+ .tile-name{font-size:9px}.stage-tile{padding:8px}
+}
+@media(max-height:680px) and (min-width:761px){
+ .legend{display:none}
+ .stage-strip{bottom:26px}.panel{top:82px;bottom:120px}
+ .hero h1{font-size:30px}.hero h1 span{font-size:24px}.hero-links{margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.hero-cta:hover{transform:none}}
+
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side" id="side">
+    <div class="brand">
+      <div class="brandline">
+        <div class="logo" aria-hidden="true"><span>J.</span></div>
+        <div class="wordmark"><div class="brandname">JIM'S <span>BIKE ROUTE</span></div><div class="brandsub">INDEPENDENT CYCLING JOURNAL</div></div>
+      </div>
+      <div class="brand-metadata"><span>RIVERSIDE EDITION</span><span>VOL. 001 / TAIWAN</span></div>
+      <p class="brand-desc">一段路，<br><em>一種生活的節奏。</em></p>
+      <div class="brand-rule"></div>
+    </div>
+    <div class="mode"><label class="label">01 / CHOOSE YOUR DEPARTURE · 出發地</label><div class="switcher" role="group" aria-label="選擇慈祐宮起點"><button id="startXin" class="active" data-start="xinzhuang" aria-pressed="true">新莊慈祐宮</button><button id="startSong" data-start="songshan" aria-pressed="false">松山慈祐宮</button></div><div class="route-brief" id="startInfo"></div></div>
+    <div class="side-head"><span>02 / ROUTE CHAPTERS · 路線章節</span><span class="count" id="progressMini">0 / 3 已探索</span></div>
+    <nav class="stage-list" id="stageList" aria-label="路線三大關卡"></nav>
+    <div class="side-addons"><div class="side-tools-title">03 / THE FIELD GUIDE · 旅途筆記</div><button class="plain-btn" data-view="overview">路線資料 <span>↗</span></button><button class="plain-btn" data-view="supply">沿途補給 <span>↗</span></button><button class="plain-btn" data-view="safety">風向與路況 <span>↗</span></button><button class="plain-btn" data-view="journal">我的騎乘日誌 <span>↗</span></button></div>
+    <div class="side-bottom"><span class="aside-issue">EDITORIAL NOTE / 001</span><strong>本 3D 地圖為概念設計，非 GPS 導航。</strong> 慈祐宮至河濱入口可能經一般道路，尚未驗證全程零汽車干擾。<span class="aside-copyright">© Jim's Bike Route</span></div>
+  </aside>
+  <main class="world" id="world">
+    <div id="scene" role="img" aria-label="Three.js 3D 馬卡龍浮島：文化徑、綠帶微森林與水岸巡航"></div><div class="vignette"></div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+    <div class="topbar">
+      <div class="hero">
+        <div class="eyebrow"><i></i> JIM'S JOURNAL <span class="eyebrow-sep">/</span> ISSUE 001</div>
+        <h1>慈字水岸線<span>騎進城市的<br>溫柔風景。</span></h1>
+        <p id="heroText">從新莊慈祐宮出發，串起文化徑、綠帶與大漢溪水岸的 3D 騎乘想像。</p>
+        <div class="hero-links"><button class="hero-cta" data-stage="0">開始探索 <span aria-hidden="true">↗</span></button><button class="hero-secondary" data-view="overview">路線資料 <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="actions" aria-label="3D 地圖工具列">
+        <span class="action-label">MAP CONTROLS</span>
+        <button class="pill" id="reset" title="回到全景"><span class="sym">↖</span><span class="caption">全景</span></button>
+        <button class="pill" id="toggleLine" aria-pressed="true"><span class="sym">⌁</span><span class="caption">路線</span></button>
+        <button class="pill" id="night" aria-pressed="false"><span class="sym" id="nightIcon">☾</span><span class="caption" id="nightLabel">夜景</span></button>
+        <button class="pill" id="autoTour" aria-pressed="false"><span class="sym">▶</span><span class="caption" id="tourLabel">自動巡覽</span></button>
+      </div>
+    </div>
+    <div class="map-counter" aria-hidden="true">TAIPEI RIVERSIDE <span> / 3D ATLAS</span></div>
+    <div class="legend">
+      <div class="legend-title">MAP NOTES <span>01 — 03</span></div>
+      <div class="legend-row"><span class="legend-dot" style="background:#eab9a7"></span>文化起點<span class="legend-en">Culture</span></div>
+      <div class="legend-row"><span class="legend-dot" style="background:#9fceb5"></span>綠帶慢行<span class="legend-en">Greenway</span></div>
+      <div class="legend-row"><span class="legend-dot" style="background:#c1b9df"></span>水岸巡航<span class="legend-en">Waterfront</span></div>
+      <div class="legend-note">拖曳旋轉 · 滾輪縮放 · 點擊地塊<br>浮島與橋梁僅為視覺化概念，不代表真實車道。</div>
+    </div>
+    <div class="stage-strip" id="stageStrip"></div>
+    <section class="panel" id="panel" aria-label="路線及關卡資訊" aria-hidden="true"><header class="panel-head" id="panelHead"></header><div class="panel-body" id="panelBody"></div></section>
+    <div class="footer">© Jim's Bike Route <span>— RIDE WITH CARE. STAY CURIOUS.</span></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="loading" id="loading"><div class="loader"></div><strong>正在展開水岸地圖</strong><p>Riverside Cycling Journal · Volume 001</p></div>
+  </main>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
+const $=(s)=>document.querySelector(s);
+const safe=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LINKS={xin:'https://newtaipei.travel/zh-tw/attractions/detail/109685',song:'https://www.ssjyg.org.tw/FirstView.aspx',rules:'https://www.hrcm.ntpc.gov.tw/About/PublicInfomation/Regulations/Detail/%E6%96%B0%E5%8C%97%E5%B8%82%E9%AB%98%E7%81%98%E5%9C%B0%E5%9C%92%E5%8D%80%E9%81%A9%E7%94%A8-%E9%81%93%E8%B7%AF%E4%BA%A4%E9%80%9A%E7%AE%A1%E7%90%86%E8%99%95%E7%BD%B0%E6%A2%9D%E4%BE%8B-%E7%AF%84%E5%9C%8D%E5%85%AC%E5%91%8A-%E6%B0%91%E5%9C%8B114%E5%B9%B403%E6%9C%8824%E6%97%A5-'};
+const starts={
+ xinzhuang:{name:'新莊慈祐宮',address:'新北市新莊區新莊路 218 號',water:'大漢溪水岸',culture:'新莊慈祐宮是新莊具歷史意義的媽祖信仰古蹟，適合從新莊老街文化開始暖身。',connector:'從廟街銜接大漢溪河濱自行車道，實際路口與是否需牽車，請先查核。',url:LINKS.xin},
+ songshan:{name:'松山慈祐宮',address:'臺北市松山區八德路四段 761 號',water:'基隆河水岸',culture:'松山慈祐宮與錫口街庄歷史密切相關，鄰近饒河街一帶，出發前可先欣賞廟宇建築。',connector:'由松山街區前往基隆河河濱路段，實際通行動線與出入口請先查核。',url:LINKS.song}
+};
+const stages=[
+ {id:'culture',num:'01',icon:'⛩',title:'慈信仰與文化徑',sub:'文化出發・暖身準備',tag:'CULTURE & START',color:'#ffd4ca',desc:'從媽祖信仰的歷史街區，帶著好心情展開單車旅程。',details:'先以輕鬆的節奏暖身，確認胎壓、煞車、前後燈及水壺。古蹟周邊人潮與汽車動線多，應優先牽車或依現場道路規定行駛。',focus:'寺廟屋脊、紅燈籠、老街街屋與暖身拍照。'},
+ {id:'forest',num:'02',icon:'🌿',title:'綠帶微森林',sub:'綠廊休憩・適時補水',tag:'GREENWAY & REST',color:'#c2edda',desc:'沿著河濱綠帶踩踏，在林蔭、小草原與河風之間找回自己的節奏。',details:'通行前留意共用步道、散步民眾與慢速騎士。穿越地下道、轉彎及路口，放慢車速並保持安全車距。',focus:'林蔭、自行車道、生態草地與休息區。'},
+ {id:'waterfront',num:'03',icon:'🌊',title:'水岸極限巡航',sub:'開闊水景・完成打卡',tag:'WATERFRONT & FINISH',color:'#d8dcfa',desc:'把視野交給河景、橋影與天空，在開闊的水岸路段完成今日騎乘。',details:'開闊河岸可能有側風或逆風；即使路面寬闊，仍需控制速度、避讓其他使用者。全程以安全與道路規定為優先。',focus:'遠眺河灣、騎行紀念牌、終點休憩與收操。'}
+];
+const supplies=[
+ {icon:'💧',name:'起點補水檢查',stage:0,detail:'出發前裝滿水壺、檢查電解質與簡易修車用品。確切飲水設備請現場確認。'},
+ {icon:'🍌',name:'綠帶休息補給',stage:1,detail:'規劃休息及補充水分的停靠點；不預設現場一定有飲水機或商店。'},
+ {icon:'📍',name:'終點回程補給',stage:2,detail:'完成騎乘後收操、補充飲水及能量，再確認返程動線。'}
+];
+const storeKey='jims_bike_route_v1';
+let cache={};try{cache=JSON.parse(localStorage.getItem(storeKey)||'{}')||{}}catch{}
+const state={start:cache.start==='songshan'?'songshan':'xinzhuang',visited:new Set(Array.isArray(cache.visited)?cache.visited:[]),active:-1,mode:'overview',night:false,route:true,tour:false,stats:{km:cache.stats?.km??'',minutes:cache.stats?.minutes??'',elev:cache.stats?.elev??''}};
+function persist(){try{localStorage.setItem(storeKey,JSON.stringify({start:state.start,visited:[...state.visited],stats:state.stats}))}catch{}}
+let toastTimer=0;function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800)}
+function startData(){return starts[state.start]}
+function renderStart(){const s=startData();$('#startInfo').innerHTML=`<b>${safe(s.name)}</b><br>${safe(s.address)}<br>建議探索水系：${safe(s.water)}`;$('#heroText').textContent=`從${s.name}出發，串起文化徑、綠帶與${s.water}的 3D 騎乘想像。`;$('#startXin').classList.toggle('active',state.start==='xinzhuang');$('#startSong').classList.toggle('active',state.start==='songshan');$('#startXin').setAttribute('aria-pressed',String(state.start==='xinzhuang'));$('#startSong').setAttribute('aria-pressed',String(state.start==='songshan'));if(templeLabel)templeLabel.setText(s.name)}
+function renderStages(){const mk=(s,i,isTile)=>isTile?`<button class="stage-tile ${state.active===i?'active':''}" data-stage="${i}" style="--tile-bg:${s.color}"><span class="tile-index">${s.num}</span><span class="tile-content"><span class="tile-kicker">CHAPTER ${s.num}</span><span class="tile-name">${s.title}</span><span class="tile-sub">${s.sub}</span></span><span class="tile-arrow" aria-hidden="true">↗</span></button>`:`<button class="stage-btn ${state.active===i?'active':''}" data-stage="${i}" style="--stage-bg:${s.color}"><span class="stage-n">${s.num}</span><span class="stage-info"><span class="stage-title">${s.title}</span><span class="stage-sub">${s.sub}</span></span><span class="stage-arrow" aria-hidden="true">↗</span></button>`;$('#stageList').innerHTML=stages.map((s,i)=>mk(s,i,false)).join('');$('#stageStrip').innerHTML=stages.map((s,i)=>mk(s,i,true)).join('');$('#progressMini').textContent=`${state.visited.size} / 3 已探索`;}
+function showPanel(kicker,title,lead,bg,html){$('#panelHead').style.setProperty('--panel-bg',bg);$('#panelHead').innerHTML=`<button class="close" data-action="close" aria-label="關閉資訊面板">×</button><div class="panel-kicker">${kicker}</div><h2 class="panel-title">${title}</h2><p class="panel-lead">${lead}</p>`;$('#panelBody').innerHTML=html;$('#panel').classList.add('open');$('#panel').setAttribute('aria-hidden','false');}
+function closePanel(){stopTour();$('#panel').classList.remove('open');$('#panel').setAttribute('aria-hidden','true')}
+function labelCard(name,value,unit=''){return `<div class="datum"><div class="datum-label">${name}</div><div class="datum-value">${value} <small>${unit}</small></div></div>`}
+function panelOverview(){const s=startData(),d=state.stats;const km=d.km!==''?`${safe(d.km)}`:'—';const elev=d.elev!==''?`${safe(d.elev)}`:'—';const time=d.minutes!==''?`${safe(d.minutes)}`:'—';const avg=+d.km>0&&+d.minutes>0?(+d.km/(+d.minutes/60)).toFixed(1):'—';showPanel('RIDE OVERVIEW','慈字水岸線','文化 × 綠帶 × 水岸｜3D 遊戲化騎行路線','#c9eef1',`<div class="info-grid">${labelCard('騎乘里程',km,'km')}${labelCard('累計爬升',elev,'m')}${labelCard('騎乘時間',time,'分鐘')}${labelCard('實測均速',avg,'km/h')}</div><div class="note">注意：本網站尚未提供經查核的 GPX 軌跡，里程、爬升與時間皆不預填。視覺上的橋梁僅為概念，不是實際車道。建議巡航均速可依自身能力設定，並遵守現場速限。</div><h3 class="sec-heading">路線的三張明信片</h3>${stages.map((t,i)=>`<div class="card"><h3>${t.num} / ${t.title}</h3><p>${t.desc}</p><div class="btn-row"><button class="ghost" data-stage="${i}">探索這一關 →</button></div></div>`).join('')}<h3 class="sec-heading">文化起點</h3><div class="card"><h3>${s.name}</h3><p>${s.culture}<br>${s.address}</p><div style="margin-top:10px"><a class="source-link" target="_blank" rel="noopener noreferrer" href="${s.url}">查看廟宇官方／政府景點資訊 ↗</a></div></div><div class="btn-row"><button class="cta" data-view="journal">填入實際騎乘紀錄</button><button class="ghost" data-view="safety">安全提醒</button></div>`)}
+function panelStage(i){const s=stages[i],d=startData();let extra='';if(i===0)extra=`<div class="card"><h3>${d.name}</h3><p>${d.culture}<br>地址：${d.address}<br><strong>進入河濱提醒：</strong>${d.connector}</p><div style="margin-top:10px"><a class="source-link" target="_blank" rel="noopener noreferrer" href="${d.url}">查看景點資料 ↗</a></div></div>`;if(i===1)extra='<div class="card"><h3>綠帶環境觀察</h3><p>看見河岸草地、樹木與不同使用者共享的遊憩空間時，以可隨時煞停的速度騎乘。補水位置需另行實地確認。</p></div>';if(i===2)extra='<div class="card"><h3>終點打卡提示</h3><p>把長直線視為欣賞河景的路段，而非競速賽道。遇到行人、孩童、寵物及對向來車，提前減速。</p></div>';showPanel(`STAGE ${s.num} · ${s.tag}`,`${s.title}`,s.desc,s.color,`<h3 class="sec-heading">本關路線介紹</h3><p class="copy">${s.details}</p><div class="card"><h3>值得收藏的畫面</h3><p>${s.focus}</p></div>${extra}<h3 class="sec-heading">本關補給與停靠</h3><div class="card supply"><div class="supply-icon">${supplies[i].icon}</div><div><h3>${supplies[i].name}</h3><p>${supplies[i].detail}</p></div></div><div class="note">※ 3D 地塊與景物為設計示意；實際水岸出入口、路況和與一般車流的分隔程度，應出發前確認。</div><div class="btn-row"><button class="cta" data-view="${i<2?'next':'journal'}">${i<2?'下一關 →':'完成騎乘・寫日記'}</button><button class="ghost" data-view="overview">路線總覽</button></div>`)}
+function panelSupply(){showPanel('WATER & REST','補給・補水指南','慢慢騎，也要記得照顧自己。','#fff1be',`<p class="copy">這是三個建議補給情境，並非已驗證的實際商家、飲水機或便利商店位置。</p>${supplies.map((s,i)=>`<div class="card supply"><div class="supply-icon">${s.icon}</div><div><h3>${s.name} <span class="card-tag">關卡 ${i+1}</span></h3><p>${s.detail}</p><button class="ghost" style="margin-top:10px" data-stage="${i}">查看關卡 →</button></div></div>`).join('')}<div class="note">帶足水、簡易修車工具與充足電量。夏季留意熱傷害，停靠勿占用車道。</div>`)}
+function panelSafety(){showPanel('RIDE SAFE','風向・路況提醒','安全比數字更重要，巡航不等於競速。','#dce7fc',`<div class="card"><h3>河濱風向</h3><p>河面開闊，容易遭遇側風或逆風。以當日官方氣象預報、風向與現場體感判斷；本站不顯示即時風速。</p></div><div class="card"><h3>鋪面與橋梁</h3><p>小心積水、砂石、伸縮縫、橋下陰暗轉彎與臨時施工。雨後更應保守騎乘，必要時停車牽行。</p></div><div class="card"><h3>河濱共享空間</h3><p>留意步行者、慢速單車、寵物與孩童；禁止將「零汽車干擾」理解成「可以高速競速」。</p></div><div class="card"><h3>寺廟到河濱的銜接</h3><p>${startData().connector} 本站沒有已驗證的全程 0% 汽車路線，請依道路現況規劃安全的路口與牽車路段。</p><div style="margin-top:10px"><a class="source-link" href="${LINKS.rules}" target="_blank" rel="noopener noreferrer">查看新北河濱路權管制公告 ↗</a></div></div><div class="note">當日若有封閉、施工或天候風險，應依現場公告調整或取消騎乘。</div>`)}
+function socialText(){const s=startData(),d=state.stats;let km=d.km===''?'XX':d.km;let time=d.minutes===''?'XX':d.minutes;let avg=+d.km>0&&+d.minutes>0?(+d.km/(+d.minutes/60)).toFixed(1):'XX';return `慈字水岸線｜從${s.name}出發的水岸巡航\n\n今天從${s.name}出發，在歷史街區暖身，再把踩踏節奏交給${s.water}的綠帶與河景。從文化地標到微森林，再到開闊水岸，每一段都值得慢慢收藏。\n\n里程：${km} km\n騎乘時間：${time} 分鐘\n均速：${avg} km/h\n\n#JimsBikeRoute #慈字水岸線 #雙北河濱 #公路車巡航 #騎乘日記`}
+function panelJournal(){const d=state.stats;showPanel('YOUR RIDE DIARY','我的水岸騎乘紀錄','填入實際數據，即可產生可複製的 IG / FB 文字。','#ffd8df',`<form id="rideForm"><div class="record-grid"><div class="field"><label for="km">實際里程（km）</label><input type="number" id="km" min="0" step="0.1" value="${safe(d.km)}" placeholder="例如 32.5"></div><div class="field"><label for="minutes">騎乘時間（分鐘）</label><input type="number" id="minutes" min="0" step="1" value="${safe(d.minutes)}" placeholder="例如 100"></div></div><div class="field"><label for="elev">累計爬升（m，可不填）</label><input type="number" id="elev" min="0" step="1" value="${safe(d.elev)}" placeholder="例如 60"></div><button type="submit" class="cta" style="width:100%;margin:4px 0 14px">儲存實際騎乘數據</button></form><h3 class="sec-heading">社群貼文預覽</h3><div class="post-text" id="postText">${safe(socialText())}</div><div class="btn-row"><button class="cta" data-action="copy">複製 IG / FB 貼文</button><button class="ghost" data-view="overview">回總覽</button></div><div class="note">尚未騎乘時請保留 XX 佔位符，不要將示範數據當作實測成果。</div>`)}
+function selectStage(i,{fly=true,open=true}={}){if(i<0||i>2)return;state.active=i;state.visited.add(i);persist();renderStages();if(fly)flyTo(i);if(open)panelStage(i);}
+function overview(){state.active=-1;renderStages();flyTo(-1);panelOverview()}
+function switchStart(id){if(!starts[id])return;stopTour();state.start=id;persist();renderStart();if(state.active===0)panelStage(0);else if($('#panel').classList.contains('open')&&state.active===-1)panelOverview();toast(`已切換：${starts[id].name}｜路線為示意，尚待實測`)}
+
+// ---- 3D world: procedural original low-poly assets; no external textures required ----
+const host=$('#scene');const scene=new THREE.Scene();scene.background=new THREE.Color('#e9f8fb');scene.fog=new THREE.Fog('#e9f8fb',70,120);
+const camera=new THREE.PerspectiveCamera(44,1,.1,220);camera.position.set(31,33,48);
+let renderer;try{renderer=new THREE.WebGLRenderer({antialias:innerWidth>760,alpha:false,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<760?1.5:2));renderer.setSize(host.clientWidth,host.clientHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;host.appendChild(renderer.domElement)}catch(err){$('#loading').innerHTML=`<strong>此瀏覽器未能啟動 3D</strong><p>請使用最新版 Chrome / Edge、啟用 WebGL，或確認 Three.js CDN 可以連線。</p>`;throw err;}
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.075;controls.minDistance=17;controls.maxDistance=90;controls.maxPolarAngle=Math.PI*.46;controls.minPolarAngle=.25;controls.target.set(0,0,0);controls.enablePan=true;controls.screenSpacePanning=false;controls.update();
+const hemi=new THREE.HemisphereLight('#ffffff','#b2c2c0',2.25);scene.add(hemi);const sun=new THREE.DirectionalLight('#ffffff',2.3);sun.position.set(-17,38,26);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-48;sun.shadow.camera.right=48;sun.shadow.camera.top=40;sun.shadow.camera.bottom=-40;sun.shadow.normalBias=.05;scene.add(sun);
+const nightLight=new THREE.PointLight('#ffd8ac',0,48);nightLight.position.set(-18,11,-2);scene.add(nightLight);
+const M=(c,r=.9,metal=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:metal,flatShading:true});
+const mats={white:M('#fff9f0'),stone:M('#e4d8cd'),road:M('#fdf9ee'),yellow:M('#f7b98d'),line:M('#ffecca'),wood:M('#aa8776'),red:M('#de797e'),roof:M('#d97574'),gold:M('#f8cd83'),pine:M('#79bfa3'),forest:M('#9fd9ad'),water:M('#a6ddec',.39,.12),sea:M('#bee7f0',.5),bike:M('#568d95'),wheel:M('#5d6676'),skin:M('#f7c6a4'),shirt:M('#f3adbc'),grass:M('#d8eed7'),purple:M('#b4b8e7')};
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),mats.sea);ground.rotation.x=-Math.PI/2;ground.position.y=-3.95;ground.receiveShadow=true;scene.add(ground);
+const world=new THREE.Group();scene.add(world);const routeGroup=new THREE.Group();world.add(routeGroup);const interactive=[];const islandGroups=[];let templeLabel=null;
+function addMesh(parent,geometry,material,x=0,y=0,z=0,shadow=true){const mesh=new THREE.Mesh(geometry,material);mesh.position.set(x,y,z);mesh.castShadow=shadow;mesh.receiveShadow=true;parent.add(mesh);return mesh}
+const box=(p,w,h,d,m,x=0,y=0,z=0)=>addMesh(p,new THREE.BoxGeometry(w,h,d),m,x,y,z);
+const cyl=(p,radTop,radBottom,h,seg,m,x=0,y=0,z=0)=>addMesh(p,new THREE.CylinderGeometry(radTop,radBottom,h,seg),m,x,y,z);
+const sphere=(p,r,m,x=0,y=0,z=0,seg=9)=>addMesh(p,new THREE.SphereGeometry(r,seg,6),m,x,y,z);
+function rod(parent,a,b,rad,material){let v=new THREE.Vector3().subVectors(new THREE.Vector3(...b),new THREE.Vector3(...a));const mesh=addMesh(parent,new THREE.CylinderGeometry(rad,rad,v.length(),6),material);mesh.position.copy(new THREE.Vector3(...a).add(new THREE.Vector3(...b)).multiplyScalar(.5));mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),v.normalize());return mesh}
+function tree(p,x,z,size=1,pink=false){let t=new THREE.Group();t.position.set(x,.5,z);p.add(t);cyl(t,.12,.18,1.35*size,6,mats.wood,0,.7*size,0);const green=pink?M('#ecc2ce'):M(['#97d9ad','#b6e3bb','#83c9b1'][Math.abs(Math.floor((x*19+z*13)))%3]);sphere(t,.8*size,green,0,1.7*size,0,7);sphere(t,.63*size,green,-.35*size,1.45*size,.35*size,7)}
+function shrub(p,x,z,c){sphere(p,.31,M(c),x,.62,z,6)}
+function island(idx,x,groundColor,sideColor){const group=new THREE.Group();group.position.set(x,0,0);group.userData.stage=idx;world.add(group);islandGroups.push(group);const rock=cyl(group,7.5,6.55,3.2,6,M(sideColor),0,-2.0,0);rock.rotation.y=Math.PI/6;rock.userData.stage=idx;const top=cyl(group,7.55,7.55,.48,6,M(groundColor),0,-.23,0);top.rotation.y=Math.PI/6;top.userData.stage=idx;interactive.push(rock,top);const rim=cyl(group,7.7,7.65,.18,6,M('#fffcf0'),0,-.35,0);rim.rotation.y=Math.PI/6;rim.userData.stage=idx;interactive.push(rim);return group}
+const g0=island(0,-17,'#ffe8d7','#cbb8aa'),g1=island(1,0,'#caedd8','#abcabc'),g2=island(2,17,'#d8e4f9','#b8c3d8');
+function pathPavement(p,x0,x1,z,width=1.6){let len=x1-x0;const road=box(p,len,.10,width,mats.road,(x0+x1)/2,.065,z);road.castShadow=false;const center=box(p,len,.03,.095,mats.yellow,(x0+x1)/2,.135,z);center.castShadow=false;}
+for(const g of islandGroups)pathPavement(g,-7,7,3.0,1.55);
+function bridgeBetween(a,b){const len=b-a;box(routeGroup,len,.24,2.15,mats.white,(a+b)/2,.1,3.0);box(routeGroup,len,.03,.10,mats.yellow,(a+b)/2,.235,3.0);for(let x=a+.45;x<b;x+=1.3){for(const z of [1.87,4.13]){cyl(routeGroup,.04,.04,.73,6,mats.bike,x,.52,z)}}for(const z of [1.87,4.13])box(routeGroup,len,.07,.07,mats.bike,(a+b)/2,.83,z)}
+bridgeBetween(-10,-7);bridgeBetween(7,10);
+function stair(p,x,z){for(let n=0;n<3;n++)box(p,5+n*.25,.18,.75,mats.stone,x,.23-n*.13,z+.6+n*.62)}
+function lantern(p,x,z){const group=new THREE.Group();group.position.set(x,0,z);p.add(group);cyl(group,.06,.07,2.5,7,mats.wood,0,1.6,0);box(group,.23,.22,.23,mats.gold,0,3,0);sphere(group,.35,mats.red,0,2.62,0,8);return group}
+function roof(p,width,centerY,depth,red=mats.roof){const group=new THREE.Group();group.position.set(0,centerY,0);p.add(group);const back=box(group,width,.3,depth/2+0.2,red,0,.10,-depth/4);back.rotation.x=-.22;const front=box(group,width,.3,depth/2+.2,red,0,.10,depth/4);front.rotation.x=.22;const ridge=box(group,width+.18,.23,.26,mats.gold,0,.59,0);box(group,width+.48,.2,.24,mats.gold,0,-.26,depth/2+.15);box(group,width+.48,.2,.24,mats.gold,0,-.26,-depth/2-.15);return group}
+function temple(p){const t=new THREE.Group();t.position.set(-.5,.1,-2.0);p.add(t);box(t,5.2,.38,4.25,mats.stone,0,.25,0);box(t,4.55,2.2,3.5,mats.white,0,1.45,-.1);for(const x of [-2,-.7,.7,2]){cyl(t,.14,.14,2.7,8,mats.red,x,1.6,1.85);box(t,.31,.15,.32,mats.gold,x,2.95,1.85)}box(t,1.7,1.65,.12,M('#7e5250'),0,1.25,1.71);box(t,3.4,.42,.13,mats.gold,0,2.57,1.72);roof(t,5.8,3.27,4.7);box(t,1.6,.56,.19,M('#694d57'),0,3.02,2.2);stair(t,0,1.8);lantern(t,-2.85,2.4);lantern(t,2.85,2.4);for(let x=-3;x<=3;x+=2.6)shrub(t,x,-3.4,'#c8dfb3');return t}
+temple(g0);for(const t of [[-6,-.4,1],[-5.2,-4.5,.9],[5.8,-3.4,1.1],[5.5,1,1],[-6,5.2,.7],[4.6,5,1]])tree(g0,...t);for(let i=0;i<5;i++)box(g0,.8,1.1,.9,M(['#f2cab8','#edb3b9','#f5d8b5'][i%3]),-5.7+i*2.6,.53,-5.6).rotation.y=.16;
+function labelTexture(text,fill='#ffffff',fg='#4a6570'){const cnv=document.createElement('canvas');cnv.width=1024;cnv.height=256;const ctx=cnv.getContext('2d');ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(12,10,1000,232,62);ctx.fill();ctx.lineWidth=6;ctx.strokeStyle='#ffffffaa';ctx.stroke();ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=fg;ctx.font='bold 72px "Noto Sans TC",sans-serif';ctx.fillText(text,512,125,940);const tx=new THREE.CanvasTexture(cnv);tx.colorSpace=THREE.SRGBColorSpace;const mat=new THREE.SpriteMaterial({map:tx,depthWrite:false,transparent:true});const s=new THREE.Sprite(mat);s.scale.set(8,2,1);s.renderOrder=5;return {sprite:s,setText:(v)=>{s.material.map.dispose();const newTex=labelTexture(v,fill,fg);s.material.map=newTex.sprite.material.map;s.material.needsUpdate=true}}}
+const lbl0=labelTexture('新莊慈祐宮','#fff7ed');templeLabel=lbl0;lbl0.sprite.position.set(-.5,6.3,-2);g0.add(lbl0.sprite);
+function bench(p,x,z){box(p,2,.22,.65,mats.wood,x,.95,z);for(const dx of [-.7,.7]){box(p,.13,.7,.16,mats.wood,x+dx,.48,z)}}
+function shelter(p,x,z){box(p,3.3,.18,2.8,mats.white,x,2.8,z);for(const dx of [-1.45,1.45])for(const dz of [-1.15,1.15])cyl(p,.11,.13,2.5,8,mats.wood,x+dx,1.55,z+dz);const roof1=box(p,3.9,.18,1.7,M('#ffdfba'),x,3.05,z-.75);roof1.rotation.x=-.12;const roof2=box(p,3.9,.18,1.7,M('#ffdfba'),x,3.05,z+.75);roof2.rotation.x=.12;bench(p,x,z)}
+shelter(g1,0,-1.7);for(const t of [[-6,-2,1.25],[-5.7,2,1.1],[-4.7,-5,1],[5.8,-3.2,1.2],[5.2,1.2,1],[3.9,-5.4,.9],[-.4,-5.3,1.05],[3.8,5.2,.85],[-4,5.5,.75]])tree(g1,...t);for(const [x,z] of [[-2,-4.3],[2,-5],[3,-3.5],[5,-.8]])shrub(g1,x,z,'#e6bcd1');const pond=addMesh(g1,new THREE.CylinderGeometry(2.0,2.0,.12,20),mats.water,-1.3,.05,-4.3);pond.scale.z=.62;pond.castShadow=false;const l1=labelTexture('綠帶微森林','#edfff5');l1.sprite.position.set(0,5.8,-3.4);g1.add(l1.sprite);
+function finishArch(p,x,z){for(const xx of [x-1.8,x+1.8])box(p,.28,3.65,.3,mats.bike,xx,1.95,z);box(p,4.0,.44,.44,mats.purple,x,3.83,z);const lbl=labelTexture('FINISH','#fef1ff');lbl.sprite.scale.set(3.45,.86,1);lbl.sprite.position.set(x,4.45,z);p.add(lbl.sprite)}
+finishArch(g2,2.5,3);const cafe=new THREE.Group();cafe.position.set(-1,0,-2.4);g2.add(cafe);box(cafe,4.4,2.6,3.4,mats.white,0,1.4,0);const cafeRoof=box(cafe,5,.24,4.1,M('#c3bce3'),0,2.87,0);cafeRoof.rotation.z=.09;box(cafe,2.5,1.1,.08,M('#a3cfdd',.25),0,1.4,1.74);for(const x of [-2.5,2.5])tree(g2,x+3,0,.75,true);for(const t of [[-5.5,-4.4,1],[-5.4,1.4,1.2],[5.4,-4.1,1.05],[5.3,5.4,.7]])tree(g2,...t);const l2=labelTexture('水岸極限巡航','#f4f0ff');l2.sprite.position.set(0,6,-3.6);g2.add(l2.sprite);
+const routeCurvePts=[];for(let k=-24;k<=24;k+=1)routeCurvePts.push(new THREE.Vector3(k,.19,3));const routeLine=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(routeCurvePts),140,.095,6,false),M('#e5a19a'));routeLine.castShadow=false;routeGroup.add(routeLine);
+function cyclist(p,x,z,scale=1,colors={}){const bike=new THREE.Group();bike.position.set(x,.03,z);bike.scale.setScalar(scale);p.add(bike);const tire=M('#677582'),frame=M(colors.frame||'#6ba3ac'),shirt=M(colors.shirt||'#ffd1bd');for(const dx of [-.83,.83]){const wheel=new THREE.Mesh(new THREE.TorusGeometry(.56,.095,7,18),tire);wheel.position.set(dx,.66,0);bike.add(wheel);for(let a=0;a<4;a++){const r=a*Math.PI/4;rod(bike,[dx-Math.cos(r)*.49,.66-Math.sin(r)*.49,0],[dx+Math.cos(r)*.49,.66+Math.sin(r)*.49,0],.018,M('#c7d7dd'))}}const A=[-.83,.66,0],B=[0,1.55,0],C=[.83,.66,0],D=[-.14,.88,0];for(const [a,b] of [[A,B],[B,C],[C,D],[D,A],[D,B]])rod(bike,a,b,.057,frame);rod(bike,[0,1.6,0],[.31,1.7,0],.07,tire);cyl(bike,.17,.14,.12,8,tire,0,1.62,0);rod(bike,[-.1,1.95,0],[.25,2.61,0],.22,shirt);rod(bike,[-.05,2.4,0],[.42,1.76,0],.08,shirt);rod(bike,[.19,2.38,0],[.42,1.76,0],.08,shirt);rod(bike,[-.01,2.01,0],[-.4,1.25,0],.09,M('#7888bd'));rod(bike,[-.4,1.25,0],[.1,1.0,0],.09,M('#7888bd'));sphere(bike,.34,mats.skin,.16,2.88,0,9);const helmet=sphere(bike,.36,M(colors.helmet||'#f2b6c3'),.11,3.03,-.03,10);helmet.scale.y=.55;return bike}
+const cyclistMoving=cyclist(routeGroup,-23.5,3,1.07);cyclistMoving.position.y=.23;cyclist(g1,-3,2.9,.48,{shirt:'#f8b8c1',frame:'#9ec5b2'});cyclist(g2,-3.5,3.1,.53,{shirt:'#d8bbec',frame:'#89a4d7'});
+function buoy(x,z){let b=cyl(world,.7,.7,.22,7,M('#ffffff'),x,-3.5,z);cyl(world,.18,.18,1.1,6,M('#f2b4b6'),x,-2.9,z);b.castShadow=false}for(const [x,z] of [[-26,8],[-8,-10],[10,10],[29,-7]])buoy(x,z);
+const waveLines=[];for(let k=0;k<24;k++){const x=-46+(k*13%92),z=-20+(k*17%40);if(Math.abs(z)<9&&Math.abs(x)<33)continue;let wave=box(scene,2.2,.018,.09,M('#f5fdff'),x,-3.83,z);wave.rotation.y=(k%3-1)*.3;wave.castShadow=false;waveLines.push(wave)}
+const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();let downX=0,downY=0,dragging=false;renderer.domElement.addEventListener('pointerdown',e=>{downX=e.clientX;downY=e.clientY;dragging=false});renderer.domElement.addEventListener('pointermove',e=>{if(Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY)>9)dragging=true});renderer.domElement.addEventListener('pointerup',e=>{if(dragging)return;const rect=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-rect.left)/rect.width)*2-1;pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects(interactive,false);if(hits.length){selectStage(hits[0].object.userData.stage);closeMobile()}});
+let moveTo=null;function flyTo(i){const target=i<0?new THREE.Vector3(0,0,0):new THREE.Vector3([-17,0,17][i],0,0);const offset=i<0?new THREE.Vector3(31,33,48):new THREE.Vector3(15,17,23);moveTo={startCam:camera.position.clone(),endCam:target.clone().add(offset),startTarget:controls.target.clone(),endTarget:target,begin:performance.now(),duration:920}};
+function updateCamera(now){if(!moveTo)return;let a=Math.min((now-moveTo.begin)/moveTo.duration,1),e=1-Math.pow(1-a,3);camera.position.lerpVectors(moveTo.startCam,moveTo.endCam,e);controls.target.lerpVectors(moveTo.startTarget,moveTo.endTarget,e);if(a>=1)moveTo=null;}
+function setNight(next){state.night=next;$('#night').classList.toggle('active',next);$('#night').setAttribute('aria-pressed',String(next));$('#nightIcon').textContent=next?'☀':'☾';$('#nightLabel').textContent=next?'白天':'夜景';scene.background.set(next?'#4d607c':'#e9f8fb');scene.fog.color.set(next?'#4d607c':'#e9f8fb');hemi.intensity=next?1.0:2.25;sun.intensity=next?.55:2.3;sun.color.set(next?'#d9d5ee':'#ffffff');nightLight.intensity=next?42:0;renderer.toneMappingExposure=next?1.18:1.25;ground.material=next?M('#879db4',.45):mats.sea;}
+let timer=null;function stopTour(){state.tour=false;clearInterval(timer);timer=null;$('#autoTour').classList.remove('active');$('#autoTour').setAttribute('aria-pressed','false');$('#tourLabel').textContent='自動巡覽'}
+function startTour(){stopTour();state.tour=true;$('#autoTour').classList.add('active');$('#autoTour').setAttribute('aria-pressed','true');$('#tourLabel').textContent='停止巡覽';let idx=0;selectStage(idx++);timer=setInterval(()=>{if(idx>=3){stopTour();toast('三大水岸關卡導覽完成');return}selectStage(idx++)},4400)}
+function toggleRoute(){state.route=!state.route;routeLine.visible=state.route;$('#toggleLine').classList.toggle('active',state.route);$('#toggleLine').setAttribute('aria-pressed',String(state.route));toast(state.route?'已顯示概念路線':'已隱藏概念路線')}
+function closeMobile(){ $('#app').classList.remove('menu-open');$('#side').classList.remove('open');$('#mobileToggle').setAttribute('aria-expanded','false') }
+function setPanelView(view){if(view==='overview')overview();else if(view==='supply')panelSupply();else if(view==='safety')panelSafety();else if(view==='journal')panelJournal();else if(view==='next')selectStage(Math.min(state.active+1,2));closeMobile()}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.start){switchStart(b.dataset.start);return}if(b.dataset.stage!==undefined){stopTour();selectStage(Number(b.dataset.stage));closeMobile();return}if(b.dataset.view){stopTour();setPanelView(b.dataset.view);return}if(b.dataset.action==='close'){closePanel();return}if(b.dataset.action==='copy'){const t=socialText();if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>toast('IG / FB 貼文已複製')).catch(()=>legacyCopy(t))}else legacyCopy(t)}});
+function legacyCopy(s){const el=document.createElement('textarea');el.value=s;el.style.position='fixed';el.style.left='-2000px';document.body.appendChild(el);el.select();try{document.execCommand('copy');toast('貼文已複製')}catch{toast('無法自動複製，請手動選取貼文')}el.remove()}
+document.addEventListener('submit',e=>{if(e.target?.id!=='rideForm')return;e.preventDefault();const vals=[+$('#km').value,+$('#minutes').value,+$('#elev').value];if(vals.some(v=>!Number.isFinite(v)||v<0)||vals[0]>9999||vals[1]>99999||vals[2]>50000){toast('請輸入有效的非負數值');return}state.stats={km:$('#km').value,minutes:$('#minutes').value,elev:$('#elev').value};persist();panelJournal();toast('騎乘紀錄已儲存在此瀏覽器')});
+$('#mobileToggle').addEventListener('click',()=>{const open=!$('#side').classList.contains('open');$('#side').classList.toggle('open',open);$('#app').classList.toggle('menu-open',open);$('#mobileToggle').setAttribute('aria-expanded',String(open))});$('#reset').addEventListener('click',()=>{stopTour();state.active=-1;renderStages();flyTo(-1);$('#panel').classList.remove('open');$('#panel').setAttribute('aria-hidden','true');closeMobile()});$('#toggleLine').addEventListener('click',toggleRoute);$('#night').addEventListener('click',()=>setNight(!state.night));$('#autoTour').addEventListener('click',()=>state.tour?stopTour():startTour());document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();closeMobile()}});
+function onResize(){const w=host.clientWidth,h=host.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,w<760?1.5:2))}window.addEventListener('resize',onResize);onResize();
+renderStart();renderStages();$('#loading').remove();let last=performance.now();function animate(now){requestAnimationFrame(animate);let dt=Math.min((now-last)/1000,.1);last=now;const t=(now*.001)%29;cyclistMoving.position.x=-23.5+(t/29)*47;for(let i=0;i<waveLines.length;i++){waveLines[i].position.x+=Math.sin(now*.0006+i)*.00035}updateCamera(now);controls.update();renderer.render(scene,camera)}requestAnimationFrame(animate);
+</script>
+</body>
+</html>
